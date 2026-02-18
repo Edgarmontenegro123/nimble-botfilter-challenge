@@ -23,12 +23,17 @@ export async function fetchJson<T>(
     }
 
     if(!response.ok) {
+        console.log("Data:", data);
+        console.log("Data JSON:", JSON.stringify(data, null, 2));
+
+
         if(typeof data === 'string') {
             throw new Error(data);
         }
 
-        if(data && typeof data === 'object' && 'message' in data) {
-            throw new Error(String((data as {message?: unknown}).message));
+        if(data && typeof data === 'object') {
+            if ('message' in data) throw new Error(String((data as any).message));
+            if ('error' in data) throw new Error(String((data as any).error));
         }
 
         throw new Error('Unexpected API error');

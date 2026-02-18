@@ -1,35 +1,52 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import {useEffect, useState} from 'react'
+import {getCandidateByEmail, getJobList} from './api/endpoints.ts';
+import type {Candidate, Job} from './api/types.ts';
 
-function App() {
-  const [count, setCount] = useState(0)
+const EMAIL = 'edgarmontenegro321@gmail.com';
+
+
+
+export default function App() {
+  const [candidate, setCandidate] = useState<Candidate | null> (null);
+  const [jobs, setJobs] = useState<Job[]>([]);
+  const [loading, setLoading] = useState<boolean>(true);
+  const [error, setError] = useState<string | null>(null);
+
+    useEffect(() => {
+        const run = async () => {
+            try {
+                setLoading(true);
+                setError(null);
+
+                const [c, j] = await Promise.all([
+                    getCandidateByEmail(EMAIL),
+                    getJobList(),
+                ]);
+
+                setCandidate(c);
+                setJobs(j);
+            } catch (e) {
+                setError(e instanceof Error ? e.message : 'Unknown error');
+            } finally {
+                setLoading(false);
+            }
+        };
+        run();
+    }, []);
+
+    if (loading) return <div style={{padding: 16}}>Loading...</div>
+    if (error) return <div style={{padding: 16}}>Error: {error}</div>;
 
   return (
     <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
+      <div style={{padding: 16, fontFamily: 'sans-serif'}}>
+        <h2>Smoke test</h2>
+          <h3>Candidate</h3>
+          <pre>{JSON.stringify(candidate, null, 2)}</pre>
+
+          <h3>Jobs</h3>
+          <pre>{JSON.stringify(jobs, null, 2)}</pre>
       </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.tsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
     </>
   )
 }
-
-export default App
