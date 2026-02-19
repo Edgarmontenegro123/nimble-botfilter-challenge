@@ -37,7 +37,19 @@ export default function App() {
         run();
     }, []);
 
-    if (loading) return <div style={{padding: 16}}>Loading...</div>
+    if (loading) {
+        return (
+            <div className='loadingOverlay'>
+                <div className='loadingCard'>
+                    <div className='spinner' />
+                    <div style={{ fontWeight: 700 }}>Loading…</div>
+                    <div style={{ fontSize: 13, opacity: 0.75 }}>
+                        Fetching candidate and jobs
+                    </div>
+                </div>
+            </div>
+        )
+    }
     if (error) return <div style={{padding: 16}}>Error: {error}</div>;
 
   return (
