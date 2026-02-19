@@ -8,7 +8,7 @@ type Props = {
 
 export const JobList = ({ jobs, candidate }: Props) => {
     return (
-        <div style = {{display: 'grid', gap: 12}}>
+        <div className = 'jobsGrid'>
             {jobs.map((job: Job) => (
                 <JobItem key = {job.id} job = {job} candidate = {candidate}/>
             ))}

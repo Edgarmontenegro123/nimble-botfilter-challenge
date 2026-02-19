@@ -76,6 +76,7 @@ export const JobItem = ({ job, candidate }: Props) => {
                 value = {repoUrl}
                 onChange={(e) => setRepoUrl(e.target.value)}
                 style = {{
+                    width: "100%",
                     padding: 8,
                     border: '1px solid #ccc',
                     borderRadius: 6,
@@ -85,6 +86,7 @@ export const JobItem = ({ job, candidate }: Props) => {
                 onClick={onSubmit}
                 disabled={submitting}
                 style = {{
+                    width: "100%",
                     padding: 8,
                     border: 'none',
                     borderRadius: 6,

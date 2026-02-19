@@ -41,12 +41,18 @@ export default function App() {
 
   return (
     <>
-      <div style={{padding: 16, fontFamily: 'sans-serif'}}>
-        <h2>Smoke test</h2>
-          <h3>Candidate</h3>
-          <pre>{JSON.stringify(candidate, null, 2)}</pre>
-
-          <h3>Jobs</h3>
+      <div className = 'page'>
+          <header style = {{display: 'grid', gap: 6}}>
+            <h2 style = {{margin: 0}}>Nimble Gravity - Bot Filter Challenge</h2>
+              {candidate && (
+                  <div style = {{fontSize: 14, opacity: 0.85}}>
+                      Candidate: <strong>{candidate.firstName}</strong>{' '} - {candidate.email}
+                  </div>
+              )}
+              <div style = {{fontSize: 13, opacity: 0.75}}>
+                  Select the role, paste your GitHub repo URL, and submit.
+              </div>
+          </header>
           {candidate && <JobList jobs={jobs} candidate={candidate}/>}
       </div>
     </>

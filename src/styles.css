@@ -1,0 +1,46 @@
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
+html,
+body {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+}
+
+body {
+    background: #1f1f1f;
+    color: #fff;
+}
+
+/* Contenedor centrado */
+.page {
+    width: min(960px, 100%);
+    margin: 0 auto;
+    padding: 16px;
+    display: grid;
+    gap: 16px;
+    justify-items: center;
+}
+
+.page > header,
+.jobsGrid {
+    width: 100%;
+}
+
+/* Grid auto: 1 columna en mobile, 2+ en desktop sin overflow */
+.jobsGrid {
+    display: grid;
+    gap: 12px;
+    grid-template-columns: 1fr;
+    justify-content: center;
+}
+
+@media (min-width: 900px) {
+    .jobsGrid {
+        grid-template-columns: 1fr 1fr;
+    }
+}
