@@ -4,8 +4,10 @@
     --Goldenrod: #F29325;
     --Rust: #D94F04;
     --Champagne-Pink: #F4E2DE;
-    --color-card-bg: #ffffff;
     --color-text-dark: #1f2937;
+    --color-error: #ff6b6b;
+    --color-success: #4ade80;
+    --color-heart: #DE2E39FF;
 }
 
 
@@ -23,30 +25,67 @@ body {
     background: var(--Pine-Green);
     color: var(--Champagne-Pink);
     overflow-x: hidden;
+    font-family: system-ui, sans-serif;
 }
 
-/* Contenedor centrado */
+/* Page Layout */
 .page {
     width: min(960px, 100%);
     margin: 0 auto;
     display: grid;
     gap: 16px;
-    justify-items: center;
     padding: 24px 20px 100px;
-    box-sizing: border-box;
+    /*justify-items: center;
+    box-sizing: border-box;*/
 }
 
-.page > header,
+.header {
+    display: grid;
+    gap: 6px
+}
+
+.title {
+    margin: 0;
+}
+
+.subtitle {
+    font-size: 13px;
+    opacity: 0.75;
+}
+
+/*.page > header,
 .jobsGrid {
     width: 100%;
-}
+}*/
 
 /* Grid auto: 1 columna en mobile, 2+ en desktop sin overflow */
 .jobsGrid {
     display: grid;
     gap: 16px;
     grid-template-columns: 1fr;
-    justify-content: center;
+    /*justify-content: center;*/
+}
+
+.card {
+    background: var(--Midnight-Green);
+    border-radius: 10px;
+    padding: 16px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.cardTitle {
+    font-weight: 700;
+}
+
+.input {
+    width: 100%;
+    padding: 8px;
+    border: none;
+    border-radius: 6px;
+    background: var(--color-text-dark);
+    color: var(--Champagne-Pink);
 }
 
 .primaryButton {
@@ -70,6 +109,15 @@ body {
     cursor: not-allowed;
 }
 
+.feedbackError {
+    font-size: 12px;
+    color: var(--color-error);
+}
+
+.feedbackSuccess {
+    font-size: 12px;
+    color: var(--color-success);
+}
 
 .footer {
     position: fixed;
@@ -80,18 +128,18 @@ body {
     color: var(--Champagne-Pink);
     text-align: center;
     padding: 1rem;
-    margin-bottom: 0;
-    box-sizing: border-box;
+    /*margin-bottom: 0;
+    box-sizing: border-box;*/
 }
 
 .footer small {
     display: block;
-    font-weight: 500;
+    /*font-weight: 500;*/
     opacity: 0.9;
 }
 
 .fa-heart-pulse{
-    color: #DE2E39FF;
+    color: var(--color-heart);
 }
 
 .loadingOverlay {
@@ -111,6 +159,7 @@ body {
     gap: 10px;
     justify-items: center;
     min-width: 220px;
+    color: var(--color-text-dark);
 }
 
 .spinner {
@@ -129,9 +178,9 @@ body {
 }
 
 @media (min-width: 900px) {
-    .page {
+    /*.page {
         padding: 24px 20px;
-    }
+    }*/
     .jobsGrid {
         grid-template-columns: 1fr 1fr;
     }

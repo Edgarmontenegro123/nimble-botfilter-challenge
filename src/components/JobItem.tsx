@@ -58,31 +58,14 @@ export const JobItem = ({ job, candidate }: Props) => {
     };
 
     return (
-        <div
-            style={{
-                border: 'none',
-                borderRadius: 10,
-                padding: 12,
-                backgroundColor: 'var(--Midnight-Green)',
-                color: 'var(--Champagne-Pink)',
-                display: 'flex',
-                flexDirection: 'column',
-                gap: 8,
-            }}
-        >
-            <div style = {{fontWeight: 700}}>{job.title}</div>
+        <div className = 'card'>
+            <div className = 'cardTitle'>{job.title}</div>
             <input
                 type = 'text'
                 placeholder = 'https://github.com/tu-usuario/tu-repo'
                 value = {repoUrl}
                 onChange={(e) => setRepoUrl(e.target.value)}
-                style = {{
-                    width: '100%',
-                    padding: 8,
-                    border: 'none',
-                    borderRadius: 6,
-                    backgroundColor: 'var(--color-text-dark)',
-                }}
+                className = 'input'
             />
             <button
                 onClick={onSubmit}
@@ -92,10 +75,10 @@ export const JobItem = ({ job, candidate }: Props) => {
                 {submitting ? 'Submitting...' : 'Submit'}
             </button>
             {submitError && (
-                <div style = {{fontSize: 12, color: '#ff6b6b'}}>{submitError}</div>
+                <div className = 'feedbackError'>{submitError}</div>
             )}
             {success && (
-                <div style = {{fontSize: 12, color: '#4ade80'}}>Submitted ✅</div>
+                <div className = 'feedbackSuccess'>Submitted ✅</div>
             )}
         </div>
     );
