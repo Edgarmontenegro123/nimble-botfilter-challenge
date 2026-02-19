@@ -1,6 +1,8 @@
 import {useEffect, useState} from 'react'
 import {getCandidateByEmail, getJobList} from './api/endpoints.ts';
+import {JobList} from './components/JobList.tsx';
 import type {Candidate, Job} from './api/types.ts';
+
 
 const EMAIL = 'edgarmontenegro321@gmail.com';
 
@@ -45,7 +47,7 @@ export default function App() {
           <pre>{JSON.stringify(candidate, null, 2)}</pre>
 
           <h3>Jobs</h3>
-          <pre>{JSON.stringify(jobs, null, 2)}</pre>
+          <JobList jobs={jobs} />
       </div>
     </>
   )
