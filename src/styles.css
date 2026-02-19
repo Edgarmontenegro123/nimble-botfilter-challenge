@@ -1,3 +1,14 @@
+:root {
+    --Midnight-Green: #025259;
+    --Pine-Green: #007172;
+    --Goldenrod: #F29325;
+    --Rust: #D94F04;
+    --Champagne-Pink: #F4E2DE;
+    --color-card-bg: #ffffff;
+    --color-text-dark: #1f2937;
+}
+
+
 *,
 *::before,
 *::after {
@@ -9,21 +20,20 @@ body {
     margin: 0;
     padding: 0;
     width: 100%;
-}
-
-body {
-    background: #1f1f1f;
-    color: #fff;
+    background: var(--Pine-Green);
+    color: var(--Champagne-Pink);
+    overflow-x: hidden;
 }
 
 /* Contenedor centrado */
 .page {
     width: min(960px, 100%);
     margin: 0 auto;
-    padding: 16px;
     display: grid;
     gap: 16px;
     justify-items: center;
+    padding: 24px 20px 100px;
+    box-sizing: border-box;
 }
 
 .page > header,
@@ -34,12 +44,60 @@ body {
 /* Grid auto: 1 columna en mobile, 2+ en desktop sin overflow */
 .jobsGrid {
     display: grid;
-    gap: 12px;
+    gap: 16px;
     grid-template-columns: 1fr;
     justify-content: center;
 }
 
+.primaryButton {
+    width: 100%;
+    padding: 8px;
+    border-radius: 6px;
+    border: none;
+    cursor: pointer;
+    background-color: var(--Goldenrod);
+    color: var(--color-text-dark);
+    font-weight: 600;
+    transition: background-color 0.2s ease;
+}
+
+.primaryButton:hover {
+    background-color: var(--Rust);
+}
+
+.primaryButton:disabled {
+    opacity: 0.7;
+    cursor: not-allowed;
+}
+
+
+.footer {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    height: 8vh;
+    background: var(--Midnight-Green);
+    color: var(--Champagne-Pink);
+    text-align: center;
+    padding: 1rem;
+    margin-bottom: 0;
+    box-sizing: border-box;
+}
+
+.footer small {
+    display: block;
+    font-weight: 500;
+    opacity: 0.9;
+}
+
+.fa-heart-pulse{
+    color: #DE2E39FF;
+}
+
 @media (min-width: 900px) {
+    .page {
+        padding: 24px 20px;
+    }
     .jobsGrid {
         grid-template-columns: 1fr 1fr;
     }

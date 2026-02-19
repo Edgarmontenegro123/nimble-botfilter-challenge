@@ -1,3 +1,4 @@
+import * as React from 'react';
 import {useEffect, useState} from 'react'
 import {getCandidateByEmail, getJobList} from './api/endpoints.ts';
 import {JobList} from './components/JobList.tsx';
@@ -55,6 +56,15 @@ export default function App() {
           </header>
           {candidate && <JobList jobs={jobs} candidate={candidate}/>}
       </div>
+      <footer className='footer'>
+          Made with{' '}
+          <i
+              className='fa-solid fa-heart-pulse fa-beat'
+              style={{ '--fa-animation-duration': '2s' } as React.CSSProperties}
+          ></i>{' '}
+          by Edgar Montenegro!
+          <small>All rights reserved © 2026</small>
+      </footer>
     </>
   )
 }

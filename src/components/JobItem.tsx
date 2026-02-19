@@ -60,10 +60,11 @@ export const JobItem = ({ job, candidate }: Props) => {
     return (
         <div
             style={{
-                border: '1px solid #e5e7eb',
+                border: 'none',
                 borderRadius: 10,
                 padding: 12,
-                backgroundColor: 'black',
+                backgroundColor: 'var(--Midnight-Green)',
+                color: 'var(--Champagne-Pink)',
                 display: 'flex',
                 flexDirection: 'column',
                 gap: 8,
@@ -76,22 +77,17 @@ export const JobItem = ({ job, candidate }: Props) => {
                 value = {repoUrl}
                 onChange={(e) => setRepoUrl(e.target.value)}
                 style = {{
-                    width: "100%",
+                    width: '100%',
                     padding: 8,
-                    border: '1px solid #ccc',
+                    border: 'none',
                     borderRadius: 6,
+                    backgroundColor: 'var(--color-text-dark)',
                 }}
             />
             <button
                 onClick={onSubmit}
                 disabled={submitting}
-                style = {{
-                    width: "100%",
-                    padding: 8,
-                    border: 'none',
-                    borderRadius: 6,
-                    cursor: 'pointer',
-                }}
+                className = 'primaryButton'
             >
                 {submitting ? 'Submitting...' : 'Submit'}
             </button>
