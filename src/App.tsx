@@ -4,10 +4,8 @@ import {getCandidateByEmail, getJobList} from './api/endpoints.ts';
 import {JobList} from './components/JobList.tsx';
 import type {Candidate, Job} from './api/types.ts';
 
-
+// Email used for retrieving candidate data (as required by the challenge)
 const EMAIL = 'edgarmontenegro321@gmail.com';
-
-
 
 export default function App() {
   const [candidate, setCandidate] = useState<Candidate | null> (null);
@@ -34,7 +32,7 @@ export default function App() {
                 setLoading(false);
             }
         };
-        run();
+        void run();
     }, []);
 
     if (loading) {
