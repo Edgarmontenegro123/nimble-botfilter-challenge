@@ -1,15 +1,16 @@
 import {JobItem} from './JobItem.tsx';
-import type {Job} from '../api/types.ts';
+import type {Candidate, Job} from '../api/types.ts';
 
 type Props = {
     jobs: Job[];
+    candidate: Pick<Candidate, 'uuid' | 'candidateId' | 'applicationId'>
 };
 
-export const JobList = ({ jobs }: Props) => {
+export const JobList = ({ jobs, candidate }: Props) => {
     return (
         <div style = {{display: 'grid', gap: 12}}>
             {jobs.map((job: Job) => (
-                <JobItem key={job.id} job={job} />
+                <JobItem key = {job.id} job = {job} candidate = {candidate}/>
             ))}
         </div>
     );

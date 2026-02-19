@@ -47,7 +47,7 @@ export default function App() {
           <pre>{JSON.stringify(candidate, null, 2)}</pre>
 
           <h3>Jobs</h3>
-          <JobList jobs={jobs} />
+          {candidate && <JobList jobs={jobs} candidate={candidate}/>}
       </div>
     </>
   )
