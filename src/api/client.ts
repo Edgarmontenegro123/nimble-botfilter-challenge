@@ -14,18 +14,10 @@ export async function fetchJson<T>(
 
     const contentType = response.headers.get('content-type');
 
-    let data: unknown;
-
-    if(contentType && contentType.includes('application/json')) {
-        data = await response.json();
-    } else {
-        data = await response.text();
-    }
+    const data: unknown =
+        contentType && contentType.includes('application/json') ? await response.json() : await response.text();
 
     if(!response.ok) {
-        console.log("Data:", data);
-        console.log("Data JSON:", JSON.stringify(data, null, 2));
-
         if(typeof data === 'string') {
             throw new Error(data);
         }
